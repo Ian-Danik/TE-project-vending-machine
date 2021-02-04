@@ -46,19 +46,21 @@ public class Balance {
 	}
 
 	public void cashOut() {
-		while (money >= 25){
-			quarters = quarters++; 
-			money -= 25;
+		if (money >= 0) {
+			while (money >= 25) {
+				quarters = quarters++;
+				money -= 25;
 			}
-		while (money >= 10){ 
-			quarters = dimes++;
-			money -= 10; 
+			while (money >= 10) {
+				quarters = dimes++;
+				money -= 10;
 			}
-		while (money >= 5){
-			quarters = nickels++; 
-			money -= 10; 
+			while (money >= 5) {
+				quarters = nickels++;
+				money -= 10;
 			}
 			pennies = (int) money;
+		}
 
 	}
 
