@@ -1,15 +1,28 @@
 package com.techelevator;
 
-import java.util.HashMap;
-import java.util.Map;
 
 public class Slot {
 
-	private Map<String, Integer> slotKey = new HashMap<>();
+	private String slotName;
+	private int amount = 5;
+	
+	public Slot(String slotName) {
+		this.slotName = slotName;
+	}
 
-//	private void populateMap() {
-//		slotKey.put(key, value);
-
+	
+	public int itemOut() {
+		amount--;
+		return amount;
 	}
 
 
+	public int getAmount() {
+		return amount;
+	}
+
+
+	public String getSlotName() {
+		return slotName;
+	}
+}
