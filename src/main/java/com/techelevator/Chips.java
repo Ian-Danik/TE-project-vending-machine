@@ -12,10 +12,10 @@ public class Chips implements Purchasable{
 	public double getPrice() {
 		return price;
 	}
-	private String getType() {
+	public String getType() {
 		return type;
 	}
-	private String getMessage() {
+	public String getMessage() {
 		return message;
 	}
 

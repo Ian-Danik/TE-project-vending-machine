@@ -7,13 +7,21 @@ public class Candy implements Purchasable {
 	private String msg = "Munch Munch, Yum!";
 	private double price;
 	
+	
+	
 	public String getName() {
-		this.name = name;
 		return name;
 	}
+	public String getType() {
+		return Type;
+	}
+	public String getMsg() {
+		return msg;
+	}
 	public double getPrice() {
-		this.price = price;
 		return price;
 	}
+	
+
 
 }
