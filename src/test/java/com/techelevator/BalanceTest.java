@@ -18,7 +18,7 @@ public class BalanceTest {
 	}
 	
 
-	@Test
+	
 	public void balance_displayMoney_test() {
 		//Arrange
 		Balance tb = new Balance(10.00);
