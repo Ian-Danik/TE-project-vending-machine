@@ -29,8 +29,9 @@ public class Snack {
 		}
 	}
 	
-	public void itemDrop() {
-		amount--;
+	public int itemDrop() {
+		 amount--;
+		 return amount;
 	}
 
 	public String getName() {
