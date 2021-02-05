@@ -33,7 +33,7 @@ public class Inventory {
 	public void display() {
 		for (int i = 0; i < snackInventory.size(); i++) {
 			System.out.println(snackInventory.get(i).getSlot() + "\t" + snackInventory.get(i).getName() + "\t" + "$"
-					+ snackInventory.get(i).getPrice());
+					+ snackInventory.get(i).getPrice() +"\n");
 		}
 	}
 
