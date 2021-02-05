@@ -61,6 +61,7 @@ public class Balance {
 				money -= 5;
 			}
 			pennies = (int) money;
+			money = 0.0;
 		}
 
 	}
