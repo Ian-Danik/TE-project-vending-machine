@@ -30,14 +30,29 @@ public class Inventory {
 
 	}
 
+	public String purchaseItems(String selection) {
+		String b = "";
+		if (selection == null) {
+			b = "selection not found";
+			return b;
+		}
+		for (int i = 0; i < snackInventory.size(); i++) {
+			if (selection.equalsIgnoreCase(snackInventory.get(i).getSlot())) {
+				 b = (snackInventory.get(i).getName() + " " + snackInventory.get(i).getStringPrice() + " "
+						+ snackInventory.get(i).getMsg());
+			} else {
+				 b = "selection not found"; 
+				  
+			}
+		}
+		return b;
+	}
+
 	public void display() {
 		for (int i = 0; i < snackInventory.size(); i++) {
 			System.out.println(snackInventory.get(i).getSlot() + "\t" + snackInventory.get(i).getName() + "\t" + "$"
 					+ snackInventory.get(i).getPrice() + "\n");
 		}
-	}
-	public void purchase(String Selector) {
-		
 	}
 
 }
