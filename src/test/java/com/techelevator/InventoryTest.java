@@ -21,26 +21,26 @@ public class InventoryTest {
 		a.display();
 	}
 
-	@Test
-	public void purchaseItems_returns_null() {
-		// Arrange
-		Inventory inventory = new Inventory();
-		String b = null;
-		// Act
-		String inventoryResult = inventory.purchaseItems(b);
-		// Assert
-		Assert.assertEquals("selection not found", inventoryResult);
-	}
-
-	@Test
-	public void purchaseItems_returns_selection() {
-		// Arrange
-		Inventory inventory = new Inventory();
-		String b = null;
-		// Act
-		String inventoryResult = inventory.purchaseItems(b);
-		// Assert
-		Assert.assertEquals("selection not found", inventoryResult);
-	}
+//	@Test
+//	public void purchaseItems_returns_null() {
+//		// Arrange
+//		Inventory inventory = new Inventory();
+//		String b = null;
+//		// Act
+//		String inventoryResult = inventory.purchaseItems(b);
+//		// Assert
+//		Assert.assertEquals("selection not found", inventoryResult);
+//	}
+//
+//	@Test
+//	public void purchaseItems_returns_selection() {
+//		// Arrange
+//		Inventory inventory = new Inventory();
+//		String b = null;
+//		// Act
+//		String inventoryResult = inventory.purchaseItems(b);
+//		// Assert
+//		Assert.assertEquals("selection not found", inventoryResult);
+//	}
 
 }

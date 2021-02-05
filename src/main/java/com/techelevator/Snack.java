@@ -18,7 +18,7 @@ public class Snack {
 		price = Double.parseDouble(stringPrice);
 		this.type = type;
 
-		if (type.equalsIgnoreCase("chips")) {
+		if (type.equalsIgnoreCase("chip")) {
 			msg = "Crunch Crunch, Yum!";
 		} else if (type.equalsIgnoreCase("candy")) {
 			msg = "Munch Munch, Yum!";

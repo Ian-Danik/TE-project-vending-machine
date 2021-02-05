@@ -1,17 +1,23 @@
 package com.techelevator;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 public class VendingMachine {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 
 		// Create Objects
 		Scanner userInput = new Scanner(System.in);
 		Inventory a = new Inventory();
 		Balance b = new Balance(0.0);
+		File dataFile = new File("log.txt");
+		PrintWriter output = new PrintWriter(dataFile);
+		
 
-		// My While loop keys
+		// My infinite while loop keys
 		int nums = 1;
 		int nums2 = 1;
 		int nums3 = 1;
@@ -34,7 +40,6 @@ public class VendingMachine {
 					System.out.println(" [3] Exit");
 					b.displayMoney();
 					String menu2Selection = userInput.nextLine();
-					nums2 = 1;
 
 					if (menu2Selection.equalsIgnoreCase("1")) {
 						while (nums3 == 1) {
@@ -49,6 +54,7 @@ public class VendingMachine {
 							String menu3Selection = userInput.nextLine();
 							if (menu3Selection.equalsIgnoreCase("1")) {
 								b.moneyIn(1.00);
+								//write added money $1.00 to log
 							}
 							if (menu3Selection.equalsIgnoreCase("2")) {
 								b.moneyIn(2.00);
@@ -66,11 +72,29 @@ public class VendingMachine {
 					}
 					if (menu2Selection.equalsIgnoreCase("2")) { // Purchase goes in here
 						a.display();
-						while(nums4 ==1){
+						while (nums4 == 1) {
 							System.out.println("Please select a Slot eg A1 or B3 in that format");
 							String selection = userInput.nextLine();
+							Snack selected = a.purchaseObject(selection);
+							
+							if(selected == null) {
+								System.out.println("I'm sorry that is an invalid selection, please try again.");
+							} else if(selected.getAmount() >= 1) {
+								selected.itemDrop();
+								b.moneyOut(selected.getPrice());
+								System.out.println(selected.getName() + " $" + selected.getStringPrice() + "\n" + selected.getMsg());
+								System.out.println("You have $" + b.getMoney() +" remaining");
+							} else if(selected.getAmount() < 1) {
+								System.out.println("Sold out! please try again");
+							}else {
+								System.out.println("I'm Sorry that is an invalid selection, please try again.");
+							}break;
+							
+							
+							
+							
+							
 						}
-						
 
 					}
 					if (menu2Selection.equalsIgnoreCase("3")) { // cashOut goes here
