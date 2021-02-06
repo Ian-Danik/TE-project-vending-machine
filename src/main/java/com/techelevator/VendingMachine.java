@@ -15,6 +15,7 @@ public class VendingMachine {
 		Inventory a = new Inventory();
 		Balance b = new Balance(0.0);
 		LogWriter c = null;
+		double moneyChange = 0;
 		try {
 			c = new LogWriter();
 		} catch (IOException e) {
@@ -49,7 +50,8 @@ public class VendingMachine {
 
 					if (menu2Selection.equalsIgnoreCase("1")) {
 						while (nums3 == 1) {
-							String money = b.moneyToString();
+						
+							
 							nums3 = 1;
 							System.out.println("How much would you like to add?");
 							System.out.println("[1] $1.00");
@@ -61,19 +63,25 @@ public class VendingMachine {
 							String menu3Selection = userInput.nextLine();
 							if (menu3Selection.equalsIgnoreCase("1")) {
 								b.moneyIn(1.00);
+								moneyChange += 1;
 							}
 							if (menu3Selection.equalsIgnoreCase("2")) {
 								b.moneyIn(2.00);
+								moneyChange += 2;
 							}
 							if (menu3Selection.equalsIgnoreCase("3")) {
 								b.moneyIn(5.00);
+								moneyChange += 5;
 							}
 							if (menu3Selection.equalsIgnoreCase("4")) {
 								b.moneyIn(10.00);
+								moneyChange += 10;
 							}
 							if (menu3Selection.equalsIgnoreCase("5")) {
 								String afterMoney = b.moneyToString();
-								c.printToFile(c.dateAndTime(), "FEED MONEY", moneyBefore, afterMoney);
+								String moneyChangeString = "$" + moneyChange;
+								c.printToFile(c.dateAndTime(), "FEED MONEY", moneyChangeString, afterMoney);
+								moneyChange = 0;
 								break;
 							}
 						}
@@ -93,6 +101,8 @@ public class VendingMachine {
 								System.out.println(selected.getName() + " $" + selected.getStringPrice() + "\n"
 										+ selected.getMsg());
 								System.out.println("You have $" + b.getMoney() + " remaining");
+								String beforeMoney = "$" + (b.getMoney() + selected.getPrice());
+								c.printToFile(c.dateAndTime(), selected.getName(), beforeMoney, b.moneyToString());
 							} else if (selected.getAmount() < 1) {
 								System.out.println("Sold out! please try again");
 							} else {
@@ -104,6 +114,7 @@ public class VendingMachine {
 
 					}
 					if (menu2Selection.equalsIgnoreCase("3")) { // cashOut goes here
+						moneyChange += b.getMoney();
 						b.cashOut();
 						System.out.println("Your change is: ");
 						if (b.getQuarters() > 0) {
@@ -118,6 +129,9 @@ public class VendingMachine {
 						if (b.getPennies() > 0) {
 							System.out.println("Pennies: " + b.getPennies());
 						}
+						String moneyChangeString = "" + moneyChange;
+						String afterMoney = b.moneyToString();
+						c.printToFile(c.dateAndTime(), "GIVE CHANGE", moneyChangeString, afterMoney);
 						break;
 					}
 
