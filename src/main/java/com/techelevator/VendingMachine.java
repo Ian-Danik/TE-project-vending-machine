@@ -44,7 +44,7 @@ public class VendingMachine {
 				while (nums2 == 1) {
 					System.out.println(" [1] Feed Money");
 					System.out.println(" [2] Select Product");
-					System.out.println(" [3] Exit");
+					System.out.println(" [3] Finish Transaction");
 					b.displayMoney();
 					String menu2Selection = userInput.nextLine();
 
@@ -60,6 +60,7 @@ public class VendingMachine {
 							System.out.println("[4] $10.00");
 							System.out.println("[5] I am done adding money");
 							b.displayMoney();
+							moneyChange = 0;
 							String menu3Selection = userInput.nextLine();
 							if (menu3Selection.equalsIgnoreCase("1")) {
 								b.moneyIn(1.00);
