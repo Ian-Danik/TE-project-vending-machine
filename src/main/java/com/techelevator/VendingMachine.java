@@ -2,22 +2,28 @@ package com.techelevator;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Scanner;
 
 public class VendingMachine {
 
-	public static void main(String[] args) throws Exception {
+	public static void main(String[] args) {
 
-		// Create Objects
+		// Create Objects that we need a input scanner, a new inventor, a new balance, and a new LogWriter
 		Scanner userInput = new Scanner(System.in);
 		Inventory a = new Inventory();
 		Balance b = new Balance(0.0);
-		File dataFile = new File("log.txt");
-		PrintWriter output = new PrintWriter(dataFile);
+		LogWriter c = null;
+		try {
+			c = new LogWriter();
+		} catch (IOException e) {
 		
+			e.printStackTrace();
+		}
+	
 
-		// My infinite while loop keys
+		// using Infinite while loops to reprompt the menus over and over
 		int nums = 1;
 		int nums2 = 1;
 		int nums3 = 1;
@@ -43,6 +49,7 @@ public class VendingMachine {
 
 					if (menu2Selection.equalsIgnoreCase("1")) {
 						while (nums3 == 1) {
+							String money = b.moneyToString();
 							nums3 = 1;
 							System.out.println("How much would you like to add?");
 							System.out.println("[1] $1.00");
@@ -54,7 +61,6 @@ public class VendingMachine {
 							String menu3Selection = userInput.nextLine();
 							if (menu3Selection.equalsIgnoreCase("1")) {
 								b.moneyIn(1.00);
-								//write added money $1.00 to log
 							}
 							if (menu3Selection.equalsIgnoreCase("2")) {
 								b.moneyIn(2.00);
@@ -66,6 +72,8 @@ public class VendingMachine {
 								b.moneyIn(10.00);
 							}
 							if (menu3Selection.equalsIgnoreCase("5")) {
+								String afterMoney = b.moneyToString();
+								c.printToFile(c.dateAndTime(), "FEED MONEY", moneyBefore, afterMoney);
 								break;
 							}
 						}
@@ -76,24 +84,22 @@ public class VendingMachine {
 							System.out.println("Please select a Slot eg A1 or B3 in that format");
 							String selection = userInput.nextLine();
 							Snack selected = a.purchaseObject(selection);
-							
-							if(selected == null) {
+
+							if (selected == null) {
 								System.out.println("I'm sorry that is an invalid selection, please try again.");
-							} else if(selected.getAmount() >= 1) {
+							} else if (selected.getAmount() >= 1) {
 								selected.itemDrop();
 								b.moneyOut(selected.getPrice());
-								System.out.println(selected.getName() + " $" + selected.getStringPrice() + "\n" + selected.getMsg());
-								System.out.println("You have $" + b.getMoney() +" remaining");
-							} else if(selected.getAmount() < 1) {
+								System.out.println(selected.getName() + " $" + selected.getStringPrice() + "\n"
+										+ selected.getMsg());
+								System.out.println("You have $" + b.getMoney() + " remaining");
+							} else if (selected.getAmount() < 1) {
 								System.out.println("Sold out! please try again");
-							}else {
+							} else {
 								System.out.println("I'm Sorry that is an invalid selection, please try again.");
-							}break;
-							
-							
-							
-							
-							
+							}
+							break;
+
 						}
 
 					}
@@ -121,6 +127,7 @@ public class VendingMachine {
 			}
 			if (menu1Selection.equalsIgnoreCase("3")) {
 				System.out.println("Thank you for using the Vendo-Matic 800");
+				c.closePrinter();
 				break;
 			}
 

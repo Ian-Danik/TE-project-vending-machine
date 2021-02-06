@@ -37,7 +37,7 @@ public class Balance {
 	}
 
 	public void displayMoney() {
-		System.out.println("Current money is " + money);
+		System.out.println("Current money is $" + money);
 	}
 
 	public double moneyOut(double moneyInput) {
@@ -64,6 +64,11 @@ public class Balance {
 			money = 0.0;
 		}
 
+	}
+
+	
+	public String moneyToString() {
+		return "$" + money;
 	}
 
 }
