@@ -10,7 +10,8 @@ public class VendingMachine {
 
 	public static void main(String[] args) {
 
-		// Create Objects that we need a input scanner, a new inventor, a new balance, and a new LogWriter
+		// Create Objects that we need a input scanner, a new inventor, a new balance,
+		// and a new LogWriter
 		Scanner userInput = new Scanner(System.in);
 		Inventory a = new Inventory();
 		Balance b = new Balance(0.0);
@@ -19,10 +20,9 @@ public class VendingMachine {
 		try {
 			c = new LogWriter();
 		} catch (IOException e) {
-		
+
 			e.printStackTrace();
 		}
-	
 
 		// using Infinite while loops to reprompt the menus over and over
 		int nums = 1;
@@ -50,8 +50,7 @@ public class VendingMachine {
 
 					if (menu2Selection.equalsIgnoreCase("1")) {
 						while (nums3 == 1) {
-						
-							
+
 							nums3 = 1;
 							System.out.println("How much would you like to add?");
 							System.out.println("[1] $1.00");
@@ -96,6 +95,8 @@ public class VendingMachine {
 
 							if (selected == null) {
 								System.out.println("I'm sorry that is an invalid selection, please try again.");
+							} else if (selected.getPrice() > b.getMoney() || b.getMoney() == 0) {
+								System.out.println("You need to put it more money. Please Try again.");
 							} else if (selected.getAmount() >= 1) {
 								selected.itemDrop();
 								b.moneyOut(selected.getPrice());
