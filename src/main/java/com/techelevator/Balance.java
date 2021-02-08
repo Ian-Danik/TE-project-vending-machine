@@ -1,11 +1,16 @@
 package com.techelevator;
 
+import java.text.DecimalFormat;
+
+
 public class Balance {
 	private double money;
 	private int quarters = 0; 
 	private int dimes = 0;
 	private int nickels = 0;
 	private int pennies = 0;
+	private static DecimalFormat df2 = new DecimalFormat("#.##");
+	
 
 	public double getMoney() {
 		return money;
@@ -37,7 +42,7 @@ public class Balance {
 	}
 
 	public void displayMoney() {
-		System.out.println("Current money is $" + money);
+		System.out.println("Current money is $" + df2.format(money));
 	}
 
 	public double moneyOut(double moneyInput) {
@@ -73,7 +78,7 @@ public class Balance {
 
 	
 	public String moneyToString() {
-		return "$" + money;
+		return "$" + df2.format(money);
 	}
 
 }

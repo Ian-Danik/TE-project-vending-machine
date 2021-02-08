@@ -4,7 +4,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.DecimalFormat;
 import java.util.Scanner;
+
 
 public class VendingMachine {  
 
@@ -23,6 +25,7 @@ public class VendingMachine {
 
 			e.printStackTrace();
 		}
+		DecimalFormat df2 = new DecimalFormat("#.##");
 
 		// using Infinite while loops to re-prompt the menus over and over
 		int nums = 1;
@@ -79,7 +82,7 @@ public class VendingMachine {
 							}
 							if (menu3Selection.equalsIgnoreCase("5")) {
 								String afterMoney = b.moneyToString();
-								String moneyChangeString = "$" + moneyChange;
+								String moneyChangeString = "$" + df2.format(moneyChange);
 								c.printToFile(c.dateAndTime(), "FEED MONEY", moneyChangeString, afterMoney);
 								moneyChange = 0;
 								break;
@@ -103,7 +106,7 @@ public class VendingMachine {
 								System.out.println(selected.getName() + " $" + selected.getStringPrice() + "\n"
 										+ selected.getMsg());
 								System.out.println("You have $" + b.getMoney() + " remaining");
-								String beforeMoney = "$" + (b.getMoney() + selected.getPrice());
+								String beforeMoney = "$" + df2.format((b.getMoney() + selected.getPrice()));
 								c.printToFile(c.dateAndTime(), selected.getName(), beforeMoney, b.moneyToString());
 							} else if (selected.getAmount() < 1) {
 								System.out.println("Sold out! please try again");
@@ -131,7 +134,7 @@ public class VendingMachine {
 						if (b.getPennies() > 0) {
 							System.out.println("Pennies: " + b.getPennies());
 						}
-						String moneyChangeString = "" + moneyChange;
+						String moneyChangeString = "" + df2.format(moneyChange);
 						String afterMoney = b.moneyToString();
 						c.printToFile(c.dateAndTime(), "GIVE CHANGE", moneyChangeString, afterMoney);
 						break;
