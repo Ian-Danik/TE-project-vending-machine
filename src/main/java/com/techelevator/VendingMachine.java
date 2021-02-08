@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Scanner;
 
-public class VendingMachine {
+public class VendingMachine {  
 
 	public static void main(String[] args) {
 
@@ -14,21 +14,21 @@ public class VendingMachine {
 		// and a new LogWriter
 		Scanner userInput = new Scanner(System.in);
 		Inventory a = new Inventory();
-		Balance b = new Balance(0.0);
-		LogWriter c = null;
+		Balance b = new Balance(0.0); 
+		LogWriter c = null; 
 		double moneyChange = 0;
-		try {
+		try {  
 			c = new LogWriter();
 		} catch (IOException e) {
 
 			e.printStackTrace();
 		}
 
-		// using Infinite while loops to reprompt the menus over and over
+		// using Infinite while loops to re-prompt the menus over and over
 		int nums = 1;
 		int nums2 = 1;
 		int nums3 = 1;
-		int nums4 = 1;
+		int nums4 = 1; 
 
 		System.out.println("Welcome to The Vendo-Matic 800, Your vending machine of the future What can I do for you?");
 
@@ -38,7 +38,7 @@ public class VendingMachine {
 			System.out.println((" [3] Exit "));
 			String menu1Selection = userInput.nextLine();
 			if (menu1Selection.equalsIgnoreCase("1")) {
-				a.display();
+				a.display(); 
 			}
 			if (menu1Selection.equalsIgnoreCase("2")) {
 				while (nums2 == 1) {
@@ -96,7 +96,7 @@ public class VendingMachine {
 							if (selected == null) {
 								System.out.println("I'm sorry that is an invalid selection, please try again.");
 							} else if (selected.getPrice() > b.getMoney() || b.getMoney() == 0) {
-								System.out.println("You need to put it more money. Please Try again.");
+								System.out.println("You need to put in more money. Please Try again.");
 							} else if (selected.getAmount() >= 1) {
 								selected.itemDrop();
 								b.moneyOut(selected.getPrice());

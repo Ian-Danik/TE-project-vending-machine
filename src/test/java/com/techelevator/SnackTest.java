@@ -3,11 +3,11 @@ package com.techelevator;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class SnackTest {
+public class SnackTest { 
 	@Test
-	public void Snack_returns_crunch_crunch_yum_if_type_chips_is_called() {
+	public void Snack_returns_crunch_crunch_yum_if_type_chip_is_called() {
 		//Arrange
-		Snack snack = new Snack("A1", "Munchos","1.00", "chips");
+		Snack snack = new Snack("A1", "Munchos","1.00", "chip");
 		//Act
 		String snackResult = snack.getMsg();
 		//Assert
@@ -47,9 +47,9 @@ public class SnackTest {
 		//Act
 		int dropItem = snack.itemDrop();
 		//Assert
-		Assert.assertEquals(4, dropItem);
+		Assert.assertEquals(4, dropItem); 
 	}
-	
+	 
 	
 
 }

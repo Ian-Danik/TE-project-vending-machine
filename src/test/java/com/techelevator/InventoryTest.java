@@ -1,5 +1,7 @@
 package com.techelevator;
 
+import java.util.List;
+
 import org.junit.*;
 
 public class InventoryTest {
@@ -14,33 +16,21 @@ public class InventoryTest {
 	}
 
 	@Test
-	public void display_test() {
+	public void display_test() { 
 
 		Inventory a = new Inventory();
 
 		a.display();
 	}
-
-//	@Test
-//	public void purchaseItems_returns_null() {
-//		// Arrange
-//		Inventory inventory = new Inventory();
-//		String b = null;
-//		// Act
-//		String inventoryResult = inventory.purchaseItems(b);
-//		// Assert
-//		Assert.assertEquals("selection not found", inventoryResult);
-//	}
-//
-//	@Test
-//	public void purchaseItems_returns_selection() {
-//		// Arrange
-//		Inventory inventory = new Inventory();
-//		String b = null;
-//		// Act
-//		String inventoryResult = inventory.purchaseItems(b);
-//		// Assert
-//		Assert.assertEquals("selection not found", inventoryResult);
-//	}
+	@Test
+	public void purchaseObjects_returns_selector() {
+		//Arrange
+		Inventory inventory = new Inventory();
+		Snack expectedSnack = new Snack ("B1", "Moonpie","1.80", "Candy");
+		//Act
+		Snack actualSnack = inventory.purchaseObject("B1");
+		//Assert
+		Assert.assertEquals("B1", actualSnack);
+	}
 
 }

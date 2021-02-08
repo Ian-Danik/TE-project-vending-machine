@@ -2,7 +2,7 @@ package com.techelevator;
 
 public class Balance {
 	private double money;
-	private int quarters = 0;
+	private int quarters = 0; 
 	private int dimes = 0;
 	private int nickels = 0;
 	private int pennies = 0;
@@ -46,7 +46,7 @@ public class Balance {
 	}
 
 	public void cashOut() {
-		quarters = 0;
+		quarters = 0; 
 		dimes = 0;
 		nickels = 0;
 		pennies = 0;

@@ -9,7 +9,7 @@ public class BalanceTest {
 	public void balance_moneyIn_test() {
 		//Arrange
 		Balance tb = new Balance(10.00);
-		
+		 
 		//Act
 		 double checker = tb.moneyIn(2.0);
 		 
@@ -18,13 +18,15 @@ public class BalanceTest {
 	}
 	
 
-	
-	public void balance_displayMoney_test() {
+	@Test
+	public void balance_display_money_test() {
 		//Arrange
 		Balance tb = new Balance(10.00);
 		
 		//Act
 		tb.displayMoney();
+		//Assert
+		Assert.assertEquals(10.0, tb.getMoney(), 0);
 	}
 	
 	@Test
@@ -54,8 +56,17 @@ public class BalanceTest {
 		Assert.assertEquals(1, tb.getNickels());
 		Assert.assertEquals(3 , tb.getPennies());
 		
-	
 	}
+	@Test
+	public void moneyToString_returns_str_$_plus_money() {
+		//Arrange
+		Balance tb = new Balance(10.0);
+		//Act
+		String actual = tb.moneyToString();
+		//Assert
+		Assert.assertEquals("$10.0",actual);
+	}
+	
 	
 
 }

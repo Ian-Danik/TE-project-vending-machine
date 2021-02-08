@@ -31,22 +31,22 @@ public class Inventory {
 	}
 
 	public void display() {
-		for (int i = 0; i < snackInventory.size(); i++) {
+		for (int i = 0; i < snackInventory.size(); i++) { 
 			System.out.println(snackInventory.get(i).getSlot() + "\t" + snackInventory.get(i).getName() + "\t" + "$"
 					+ snackInventory.get(i).getPrice() + "\n");
 		}
 	}
-	
+	 
 	public Snack purchaseObject(String selection) {
 		Snack selector = null;
 		
 		for(int i = 0; i < snackInventory.size(); i++) {
 			if(selection.equalsIgnoreCase(snackInventory.get(i).getSlot())) {
-				selector = snackInventory.get(i);
+				selector = snackInventory.get(i); 
 			}
 		}
 		
-		return selector;
+		return selector;  
 		
 	}
 

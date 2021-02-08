@@ -9,7 +9,7 @@ import java.time.format.DateTimeFormatter;
 
 public class LogWriter {
 
-	PrintWriter pw = null;
+	PrintWriter pw = null; 
 
 	
 	public LogWriter() throws IOException {
@@ -18,7 +18,7 @@ public class LogWriter {
 
 		FileWriter appender = new FileWriter(output, true);
 		pw = new PrintWriter(appender);
-		pw.println("Audit Log Started");
+		pw.println("Audit Log Started"); 
 	}
 
 	

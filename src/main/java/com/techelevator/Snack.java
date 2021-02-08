@@ -7,7 +7,7 @@ public class Snack {
 	private String slot;
 	private String msg = "";
 	private double price;
-	private String stringPrice = "";
+	private String stringPrice = ""; 
 	private  int amount = 5; 
 
 	public Snack(String slot, String name, String stringPrice, String type) {
@@ -46,7 +46,7 @@ public class Snack {
 		return slot;
 	}
 
-	public String getMsg() {
+	public String getMsg() { 
 		return msg;
 	}
 
